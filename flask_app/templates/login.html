@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AI ACADEMY名刺アプリ</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <header class='header'>
+        <h1>AI ACADEMY名刺アプリ</h1>
+    </header>
+
+    <p>{{message}}</p>
+    <p>{{login_condition}}</p>
+
+    <div class='login-form'>
+        <form action="/login", method='POST'>
+            <h3>Login</h3>
+            <div>
+                username
+                <input type="text", name='username', class='login-input-form'>
+            </div>
+            <div>
+                password
+                <input type="password", name='pwd', class='login-input-form'>
+            </div>
+
+            <input type="submit", value='ログイン' class='login-button'>
+        </form>
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+
+
+</head>
+<body>
+    <header class='header'>
+        <h1>AI ACADEMY名刺アプリ</h1>
+        <button class="logout-button"><a href="/logout">ログアウト</a></button>
+    </header>
+
+    <form action="new" method='post' enctype="multipart/form-data" class='form-new'>
+        <input type="file" name='img_file'>
+        <input type="submit" value='新規登録'>
+    </form>
+
+    <div class="container"></div>
+        <table class="cards-table" border="1">
+                <tr class="cards-header">
+                    <th>会社名</th>
+                    <th>会社住所</th>
+                    <th>氏名</th>
+                    <th>更新</th>
+                    <th>削除</th>
+                </tr>
+        
+                {% for card in cards%}
+                <tr>
+                    <form method='post' action="/update">
+                        <td><input type="text", name='company_name', value='{{card[2]}}'></td>
+                        <td><input type="text" name="company_address" value="{{ card[4] }}"></td>
+                        <td><input type="text" name="name" value="{{ card[3] }}"></td>
+                        
+                        <td>
+                            <input type="submit" value="更新" class="btn">
+                            <!--  type="hidden"で値をこっそり渡せる -->
+                            <input type="hidden" name=card_id value="{{ card[0] }}">
+                        </td>
+                    </form>
+        
+                        <td>
+                            <form method="post" action="/delete">
+                                <input type="submit" value="削除" class="btn">
+                                <input type="hidden" name=card_id value="{{ card[0] }}">
+                            </form>
+                        </td>
+                </tr>
+            
+                {% endfor %}
+            </table>
+    </div>
+    
+    
+</body>
+</html>
